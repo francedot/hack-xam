@@ -1,0 +1,67 @@
+﻿<views:NavPage xmlns="http://xamarin.com/schemas/2014/forms"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:views="clr-namespace:EyeCare.Views;assembly=EyeCare"
+               xmlns:pageViewModels="clr-namespace:EyeCare.PageViewModels;assembly=EyeCare"
+               x:Class="EyeCare.Views.CameraPage">
+    <views:NavPage.BindingContext>
+        <pageViewModels:CameraPageViewModel/>
+    </views:NavPage.BindingContext>
+
+    <StackLayout>
+        <Frame BackgroundColor="#0085CA"
+               Padding="0"
+               HeightRequest="88"
+               VerticalOptions="StartAndExpand">
+            <StackLayout HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Orientation="Horizontal"
+                         Spacing="20">
+                <Image Source="eyecare_logo_white.png"
+                       WidthRequest="44"
+                       HeightRequest="44"
+                       Margin="-28,0,0,0"/>
+                <Label Text="EyeCare"
+                       FontSize="24"
+                       VerticalTextAlignment="Center"
+                       TextColor="Black"/>
+            </StackLayout>
+        </Frame>
+
+        <Grid VerticalOptions="Fill"
+              HorizontalOptions="Center">
+            <Image Margin="20,16,20,40"
+                   VerticalOptions="StartAndExpand"
+                   Source="{Binding PreviewPhoto}"/>
+
+            <Grid Margin="0,0,0,64"
+                  VerticalOptions="End">
+                <Image Source="fab_pick.png"
+                       WidthRequest="72"
+                       HeightRequest="72"
+                       VerticalOptions="EndAndExpand"
+                       HorizontalOptions="Start"
+                       Aspect="AspectFill"
+                       Margin="38,0,0,0"
+                       TranslationY="-8">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PickPhotoCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Image Source="fab_camera.png"
+                       WidthRequest="100"
+                       HeightRequest="100"
+                       VerticalOptions="EndAndExpand"
+                       HorizontalOptions="Center"
+                       Aspect="AspectFill">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TakePhotoCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+            </Grid>
+        </Grid>
+
+    </StackLayout>
+
+</views:NavPage>
